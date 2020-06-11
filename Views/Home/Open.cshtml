@@ -1,0 +1,65 @@
+﻿@model ConsoleViewModel
+@{
+    ViewData["Title"] = Model.Screen.ScreenName;
+}
+
+    <div class="game-banner">
+        <center><img src="~/img/BannertFinale.png" /></center>
+    </div>
+
+<div class="console-container olde-font">
+    <div class="log-events d-flex flex-column">
+        @foreach (FightLog entry in Model.Log)
+        {
+            <span class="mt-2 text-center font-weight-bold">. . .</span>
+            <span class="mt-2">@Html.Raw(entry.Entry)</span>
+            
+           }
+    </div>
+    <div class="screen-options mt-2 d-flex flex-column">
+        @if(Model.Chest.ItemsInside != null) { 
+        @foreach (KeyValuePair<int, Item> item in Model.Chest.ItemsInside)
+        {
+            @Html.ActionLink($"Take the {item.Value.ItemName}", "Take", new { inventoryItemID = item.Key, itemID = item.Value.ItemID, chestID = Model.Chest.ParentContainer.ItemID})
+        }
+        }
+        @Html.ActionLink($"Close the {Model.Chest.ParentContainer.ItemName}", "Close", Model)
+    </div>
+</div>
+
+<div class="inv-view d-flex flex-column olde-font">
+    <div class="stats-container d-flex">
+        <div class="stats-char d-flex flex-column">
+            <span class="stats-name">@Model.User.Name</span>
+            <span class="stats-hp">HP: @Model.User.Health</span>
+            <span class="stats-exp">Exp: @Model.User.Experience</span>
+        </div>
+        <div class="stats-level">
+            @Model.User.Level
+        </div>
+    </div>
+    <span class="inv-title">Inventory:</span>
+    <div class="inv-items d-flex flex-column">
+        @foreach (Item item in Model.User.Inventory)
+        {
+            // TODO: If consumable (ItemType == 4), create action link
+            @if (item.ItemTypeID == 4)
+            {
+                int quant = 1;
+                foreach (InventoryItem invItem in Model.User.InventoryItems)
+                {
+                    if (invItem.ItemID == item.ItemID) quant = invItem.Quantity;
+                }
+                <span class="inv-item">@Html.ActionLink(item.ItemName + $"{(quant > 1 ? $" ({quant})" : "")}", "Eat", item)</span>
+            }
+            else
+            {
+                <span class="inv-item">@item.ItemName</span>
+            }
+        }
+    </div>
+</div>
+
+<script>
+window.scrollTo(0, document.body.clientHeight);
+</script>

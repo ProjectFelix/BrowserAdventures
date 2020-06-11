@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200504143147_initial.cs" />
+    <Compile Remove="Migrations\20200504143147_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200504154222_initial.cs" />
+    <Compile Remove="Migrations\20200504154222_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200504202828_initial.cs" />
+    <Compile Remove="Migrations\20200504202828_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200505123924_initial.cs" />
+    <Compile Remove="Migrations\20200505123924_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200505130557_initial.cs" />
+    <Compile Remove="Migrations\20200505130557_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200505131915_test.cs" />
+    <Compile Remove="Migrations\20200505131915_test.Designer.cs" />
+    <Compile Remove="Migrations\20200505133421_initial.cs" />
+    <Compile Remove="Migrations\20200505133421_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200505142930_initial.cs" />
+    <Compile Remove="Migrations\20200505142930_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200505144424_initial.cs" />
+    <Compile Remove="Migrations\20200505144424_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200505144731_test.cs" />
+    <Compile Remove="Migrations\20200505144731_test.Designer.cs" />
+    <Compile Remove="Migrations\20200505145058_init.cs" />
+    <Compile Remove="Migrations\20200505145058_init.Designer.cs" />
+    <Compile Remove="Migrations\20200505150836_test.cs" />
+    <Compile Remove="Migrations\20200505150836_test.Designer.cs" />
+    <Compile Remove="Migrations\20200505150925_init.cs" />
+    <Compile Remove="Migrations\20200505150925_init.Designer.cs" />
+    <Compile Remove="Migrations\20200505152758_init.cs" />
+    <Compile Remove="Migrations\20200505152758_init.Designer.cs" />
+    <Compile Remove="Migrations\20200505153540_init.cs" />
+    <Compile Remove="Migrations\20200505153540_init.Designer.cs" />
+    <Compile Remove="Migrations\20200505154037_init.cs" />
+    <Compile Remove="Migrations\20200505154037_init.Designer.cs" />
+    <Compile Remove="Migrations\20200505154820_init.cs" />
+    <Compile Remove="Migrations\20200505154820_init.Designer.cs" />
+    <Compile Remove="Migrations\20200505160757_init.cs" />
+    <Compile Remove="Migrations\20200505160757_init.Designer.cs" />
+    <Compile Remove="Migrations\20200505161426_init.cs" />
+    <Compile Remove="Migrations\20200505161426_init.Designer.cs" />
+    <Compile Remove="Migrations\20200506005352_init.cs" />
+    <Compile Remove="Migrations\20200506005352_init.Designer.cs" />
+    <Compile Remove="Migrations\20200506124040_init.cs" />
+    <Compile Remove="Migrations\20200506124040_init.Designer.cs" />
+    <Compile Remove="Migrations\20200506130945_init.cs" />
+    <Compile Remove="Migrations\20200506130945_init.Designer.cs" />
+    <Compile Remove="Migrations\20200506142735_init.cs" />
+    <Compile Remove="Migrations\20200506142735_init.Designer.cs" />
+    <Compile Remove="Migrations\20200506151605_init.cs" />
+    <Compile Remove="Migrations\20200506151605_init.Designer.cs" />
+    <Compile Remove="Migrations\20200506151829_init.cs" />
+    <Compile Remove="Migrations\20200506151829_init.Designer.cs" />
+    <Compile Remove="Migrations\20200506152538_init.cs" />
+    <Compile Remove="Migrations\20200506152538_init.Designer.cs" />
+    <Compile Remove="Migrations\20200508150347_init.cs" />
+    <Compile Remove="Migrations\20200508150347_init.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+  </ItemGroup>
+
+
+</Project>

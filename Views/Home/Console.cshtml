@@ -1,0 +1,87 @@
+﻿@model ConsoleViewModel
+@{
+    ViewData["Title"] = Model.Screen.ScreenName;
+}
+
+    <div class="game-banner">
+        <center><img src="~/img/BannertFinale.png" /></center>
+    </div>
+
+<div class="console-container olde-font">
+    <div class="log-events d-flex flex-column">
+        @foreach (FightLog entry in Model.Log)
+        {
+            <span class="mt-2 text-center font-weight-bold">. . .</span>
+            <p class="mt-2 @entry.EntryType">@Html.Raw(entry.Entry)</p>
+        }
+    </div>
+    <div class="screen-options mt-2 d-flex flex-column">
+        @if (Model.Screen.ScreenEnemies != null)
+        {
+            foreach (ScreenEnemy e in Model.Screen.ScreenEnemies)
+            {
+                if (Model.User.WeaponEquipped) {
+                    Item weapon = new Item();
+                    foreach (Item item in Model.User.Inventory)
+                    {
+                        if (item.ItemID == Model.User.WeaponID) weapon = item;
+                    }
+                    @Html.ActionLink(e.ScreenEnemyAction + $" with your {weapon.ItemName}", "Attack", new { screenEnemyID = e.ScreenEnemyID })
+                } else
+                {
+                    <span>You can't attack without a weapon.</span>
+                }
+            }
+        }
+        @foreach (AccessPoint p in Model.AccessPoints)
+        {
+            @Html.ActionLink(p.Description, "Travel", new { screenID = p.To })
+        }
+
+        @if (Model.Screen.ScreenInventory != null)
+        {
+            foreach (ScreenItem s in Model.Screen.ScreenInventory)
+            {
+                @Html.ActionLink(s.ScreenItemAction, s.Item.Container ? "Open" : "Take", new { inventoryItemID = 0, itemID = s.ItemID, chestID = 0 })
+            }
+        }
+    </div>
+</div>
+
+<div class="inv-view d-flex flex-column olde-font">
+    <div class="stats-container d-flex">
+        <div class="stats-char d-flex flex-column">
+            <span class="stats-name">@Model.User.Name</span>
+            <span class="stats-hp">HP: @Model.User.Health</span>
+            <span class="stats-exp">Exp: @Model.User.Experience</span>
+        </div>
+        <div class="stats-level">
+            @Model.User.Level
+        </div>
+    </div>
+    <span class="inv-title">Inventory:</span>
+    <div class="inv-items d-flex flex-column">
+        @foreach (Item item in Model.User.Inventory)
+        {
+            // TODO: If consumable (ItemType == 4), create action link
+            @if (item.ItemTypeID == 4)
+            {
+                int quant = 1;
+                foreach (InventoryItem invItem in Model.User.InventoryItems)
+                {
+                    if (invItem.ItemID == item.ItemID) quant = invItem.Quantity;
+                }
+                <span class="inv-item">@Html.ActionLink(item.ItemName + $"{(quant > 1 ? $" ({quant})" : "")}", "Eat", item)</span>
+            }
+            else
+            {
+                <span class="inv-item">@item.ItemName</span>
+            }
+        }
+    </div>
+</div>
+
+<script>
+window.scrollTo(0, document.body.clientHeight);
+</script>
+
